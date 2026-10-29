@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Alışveriş">
-<title>Alışveriş Listesi</title>
+<meta name="apple-mobile-web-app-title" content="Einkauf">
+<title>Einkaufsliste</title>
 <style>
   body { font-family: -apple-system, sans-serif; margin: 0; padding: 16px; background: #f2f2f7; }
   h1 { font-size: 24px; margin: 8px 0 16px; }
@@ -22,13 +22,13 @@
 </style>
 </head>
 <body>
-<h1>🛒 Alışveriş Listesi</h1>
+<h1>🛒 Einkaufsliste</h1>
 <div class="row">
-  <input type="text" id="item" placeholder="Ürün ekle...">
+  <input type="text" id="item" placeholder="Artikel hinzufügen...">
   <button onclick="add()">+</button>
 </div>
 <ul id="list"></ul>
-<button class="clear" onclick="clearDone()">Seçilenleri sil</button>
+<button class="clear" onclick="clearDone()">Ausgewählte löschen</button>
 
 <script>
 let items = [];
@@ -79,6 +79,10 @@ document.getElementById("item").addEventListener("keydown", e => {
   if (e.key === "Enter") add();
 });
 render();
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
 </script>
 </body>
 </html>
